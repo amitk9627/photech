@@ -15,7 +15,7 @@ const UtilsMaterialIcons = Loadable(lazy(() => import('views/utilities/MaterialI
 const UtilsTablerIcons = Loadable(lazy(() => import('views/utilities/TablerIcons')));
 // Imported file
 import { BikePurchaseForm } from 'views/AdminPanel/Purchase/BikePurchaseForm';
-import {BikeSale} from 'views/AdminPanel/Sale/BikeSale'
+import { BikeSale } from 'views/AdminPanel/Sale/BikeSale';
 
 // ==============================|| MAIN ROUTING ||============================== //
 

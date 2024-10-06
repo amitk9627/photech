@@ -22,12 +22,12 @@ const Sidebar = ({ drawerOpen, drawerToggle, window }) => {
 
   const drawer = (
     <>
-      <Box sx={{ display: { xs: 'block', md: 'none' } }} >
-        <Box sx={{ display: 'flex', p: 2, mx: 'auto' }} className='bg-black'>
+      <Box sx={{ display: { xs: 'block', md: 'none' } }}>
+        <Box sx={{ display: 'flex', p: 2, mx: 'auto' }} className="bg-black">
           <LogoSection />
         </Box>
       </Box>
-      <BrowserView className=''>
+      <BrowserView className="bg-black">
         <PerfectScrollbar
           component="div"
           style={{
@@ -35,20 +35,21 @@ const Sidebar = ({ drawerOpen, drawerToggle, window }) => {
             paddingLeft: '16px',
             paddingRight: '16px'
           }}
-          className='bg-black '
+          className="bg-black "
         >
           <MenuList />
           {/* <MenuCard /> */}
-          <Stack direction="row" justifyContent="center" sx={{ mb: 2 }} className=''>
+          <Stack direction="row" justifyContent="center" sx={{ mb: 2 }} className="text-white">
             <Chip label={process.env.REACT_APP_VERSION} disabled chipcolor="secondary" size="small" sx={{ cursor: 'pointer' }} />
           </Stack>
         </PerfectScrollbar>
       </BrowserView>
-      <MobileView>
-        <Box sx={{ px: 2 }}>
+      {/* for mobile */}
+      <MobileView className="bg-black">
+        <Box sx={{ px: 2 }} className="">
           <MenuList />
           {/* <MenuCard /> */}
-          <Stack direction="row" justifyContent="center" sx={{ mb: 2 }}>
+          <Stack direction="row" justifyContent="center" sx={{ mb: 2 }} className="text-white">
             <Chip label={process.env.REACT_APP_VERSION} disabled chipcolor="secondary" size="small" sx={{ cursor: 'pointer' }} />
           </Stack>
         </Box>
@@ -59,8 +60,7 @@ const Sidebar = ({ drawerOpen, drawerToggle, window }) => {
   const container = window !== undefined ? () => window.document.body : undefined;
 
   return (
-    <Box component="nav" sx={{ flexShrink: { md: 0 }, width: matchUpMd ? drawerWidth : 'auto' }} aria-label="mailbox folders" 
-      >
+    <Box component="nav" sx={{ flexShrink: { md: 0 }, width: matchUpMd ? drawerWidth : 'auto' }} aria-label="mailbox folders">
       <Drawer
         container={container}
         variant={matchUpMd ? 'persistent' : 'temporary'}
@@ -73,6 +73,7 @@ const Sidebar = ({ drawerOpen, drawerToggle, window }) => {
             background: theme.palette.background.default,
             // color: theme.palette.text.primary,
             borderRight: 'none',
+            backgroundColor: 'black', // complete black drawer
             [theme.breakpoints.up('md')]: {
               top: '80px'
             }
@@ -80,7 +81,7 @@ const Sidebar = ({ drawerOpen, drawerToggle, window }) => {
         }}
         ModalProps={{ keepMounted: true }}
         color="inherit"
-         className=''
+        className=""
       >
         {drawer}
       </Drawer>
