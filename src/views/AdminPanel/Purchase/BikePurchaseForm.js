@@ -10,7 +10,9 @@ export const BikePurchaseForm = () => {
 
         {/* user Details */}
         <div className=" bg-white p-4 rounded-xl relative">
-          <span className="absolute -top-2 max-md: left-[50%] -translate-x-1/2 rounded-xl bg-blue-800 text-white text-xs max-md:text-[14px] px-2 py-1">User Details</span>
+          <span className="absolute -top-2 max-md: left-[50%] -translate-x-1/2 rounded-xl bg-blue-800 text-white text-xs max-md:text-[14px] px-2 py-1">
+            User Details
+          </span>
           <div className="grid grid-cols-2 max-md:grid-cols-1 gap-3 p-4 rounded-xl">
             <FormControl fullWidth>
               <TextField id="outlined-basic" label="Person Name" variant="outlined" />
@@ -53,7 +55,9 @@ export const BikePurchaseForm = () => {
 
         {/* Bike Details */}
         <div className=" bg-white p-4 rounded-xl relative">
-          <span className="absolute -top-2 max-md: left-[50%] -translate-x-1/2 rounded-xl bg-blue-800 text-white text-xs max-md:text-[14px] px-2 py-1">Bike Details</span>
+          <span className="absolute -top-2 max-md: left-[50%] -translate-x-1/2 rounded-xl bg-blue-800 text-white text-xs max-md:text-[14px] px-2 py-1">
+            Bike Details
+          </span>
           <div className="grid grid-cols-2 max-md:grid-cols-1 gap-3  p-4 rounded-xl">
             <FormControl fullWidth>
               <TextField id="outlined-basic" label="Registration No." variant="outlined" />
@@ -68,12 +72,11 @@ export const BikePurchaseForm = () => {
             <FormControl fullWidth>
               <TextField id="outlined-basic" label="Bike Upload" variant="outlined" />
             </FormControl>
-           
           </div>
         </div>
         <div>
           <FormControl fullWidth>
-            <TextareaAutosize minRows={4} placeholder="Remarks (Notes)" className='p-2' />
+            <TextareaAutosize minRows={4} placeholder="Remarks (Notes)" className="p-2" />
           </FormControl>
         </div>
         <div className="flex justify-between">

@@ -10,9 +10,8 @@ export const initialState = {
   fontFamily: config.fontFamily,
   borderRadius: config.borderRadius,
   opened: true,
-  accessToken: '',
-  role: '',
-  userExist:''
+
+  role: ''
 };
 
 // ==============================|| CUSTOMIZATION REDUCER ||============================== //
@@ -44,7 +43,7 @@ const customizationReducer = (state = initialState, action) => {
     case actionTypes.SET_AUTH_STATE: {
       return {
         ...state,
-        role: action.payload
+        role: action.payload.role
       };
     }
     case actionTypes.LOGOUT:

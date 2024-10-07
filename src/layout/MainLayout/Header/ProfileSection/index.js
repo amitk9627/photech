@@ -59,13 +59,13 @@ const ProfileSection = () => {
    * anchorRef is used on different componets and specifying one type leads to other components throwing an error
    * */
   const anchorRef = useRef(null);
-  const handleLogout = async () => {
+  const handleLogout = () => {
     localStorage.removeItem('role');
-    await dispatch({
+    dispatch({
       type: LOGOUT
     });
     console.log('Logout');
-    navigate('/');
+    navigate('/login');
   };
 
   const handleClose = (event) => {
@@ -98,7 +98,7 @@ const ProfileSection = () => {
 
   return (
     <>
-      <Chip 
+      <Chip
         sx={{
           height: '48px',
           alignItems: 'center',
@@ -117,7 +117,6 @@ const ProfileSection = () => {
           '& .MuiChip-label': {
             lineHeight: 0
           }
-
         }}
         icon={
           <Avatar
@@ -139,8 +138,7 @@ const ProfileSection = () => {
         aria-controls={open ? 'menu-list-grow' : undefined}
         aria-haspopup="true"
         onClick={handleToggle}
-       
-        className='text-[#666] bg-[#EEE] hover:bg-[#49C401] hover:text-white shadow-lg'
+        className="text-[#666] bg-[#EEE] hover:bg-[#49C401] hover:text-white shadow-lg"
       />
       <Popper
         placement="bottom-end"

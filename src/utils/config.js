@@ -1,0 +1,1 @@
+export const BackendUrl='https://bikeworld.onrender.com/api/v1'
