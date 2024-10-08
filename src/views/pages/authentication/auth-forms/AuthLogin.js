@@ -7,7 +7,9 @@ import axios from 'axios';
 import { SET_AUTH_STATE } from 'store/actions';
 import { useDispatch } from 'react-redux';
 import { BackendUrl } from 'utils/config';
+import LoaderCircular from 'ui-component/LoaderCircular';
 export const AuthLogin = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
   const [loginForm, setLoginForm] = useState({ userName: '', password: '' });
   const navigate = useNavigate();
@@ -31,24 +33,32 @@ export const AuthLogin = () => {
         window.alert('Missing Field .... ');
         return;
       }
+      setIsLoading(true);
       const body = {
         userName: String(loginForm.userName).trim(),
         password: loginForm.password
       };
-    
+
       const response = await axios.post(`${BackendUrl}/user/login`, body);
-      console.log(response.data)
+      console.log(response.data);
       if (response.status == 200) {
-        
+        setIsLoading(false);
         funcSetRole(response.data.role);
         navigate('/dashboard');
       }
     } catch (err) {
-      console.log(err.response);
+      setIsLoading(false);
+      window.alert(err.response.data.message);
+      console.log(err.response.data.message);
     }
   };
   return (
     <>
+      {isLoading && (
+        <div>
+          <LoaderCircular />
+        </div>
+      )}
       <Box className="flex justify-center items-center py-4">
         <form className="w-full" onSubmit={handleLogin}>
           <div className="grid grid-cols-1 gap-8">
