@@ -20,7 +20,7 @@ export default function ThemeRoutes() {
   const handleLogout = async () => {
     localStorage.removeItem('role');
     console.log('logout');
-    // navigate('/login');
+    navigate('/login');
     dispatch({
       type: LOGOUT
     });
