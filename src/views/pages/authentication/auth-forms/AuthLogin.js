@@ -9,7 +9,7 @@ import { useDispatch } from 'react-redux';
 import { BackendUrl } from 'utils/config';
 import LoaderCircular from 'ui-component/LoaderCircular';
 export const AuthLogin = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [loginForm, setLoginForm] = useState({ userName: '', password: '' });
   const navigate = useNavigate();
