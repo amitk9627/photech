@@ -24,6 +24,14 @@ store.subscribe(() => {
           url: '/bikePurchaseForm',
           icon: icons.IconMotorbike,
           breadcrumbs: false
+        },
+        {
+          id: 'allbike',
+          title: 'All Bike',
+          type: 'item',
+          url: '/allBikePurchase',
+          icon: icons.IconMotorbike,
+          breadcrumbs: false
         }
       ]
     },

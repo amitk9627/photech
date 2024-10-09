@@ -15,7 +15,7 @@ const Logo = () => {
   // const theme = useTheme();
 
   return (
-    <svg width="150" height="90" xmlns="http://www.w3.org/2000/svg">
+    <svg width="150" height="100" xmlns="http://www.w3.org/2000/svg">
       <text x="10" y="50" fontFamily="Arial" fontSize="35" fill="#49c401">
         PhoTech
       </text>

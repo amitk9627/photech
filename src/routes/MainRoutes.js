@@ -16,6 +16,7 @@ const UtilsTablerIcons = Loadable(lazy(() => import('views/utilities/TablerIcons
 // Imported file
 import { BikePurchaseForm } from 'views/AdminPanel/Purchase/BikePurchaseForm';
 import { BikeSale } from 'views/AdminPanel/Sale/BikeSale';
+import { AllBikePurchase } from 'views/AdminPanel/Purchase/AllBikePurchase';
 
 // ==============================|| MAIN ROUTING ||============================== //
 
@@ -38,6 +39,10 @@ const MainRoutes = {
     {
       path: 'bikeSalse',
       element: <BikeSale />
+    },
+    {
+      path: 'allBikePurchase',
+      element: <AllBikePurchase />
     }
   ]
 };
