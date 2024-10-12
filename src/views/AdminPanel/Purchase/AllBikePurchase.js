@@ -3,6 +3,8 @@ import axios from 'axios';
 import { BackendUrl } from 'utils/config';
 import { formatDate } from 'utils/TimeDate';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
+import { generatePDF } from 'utils/generatePDF';
+import { IconDownload } from '@tabler/icons-react';
 
 const columns = [
   {
@@ -42,7 +44,12 @@ const columns = [
     label: 'Purchase Date',
     minWidth: 150
   },
-  { id: 'bikeNo', label: 'Bike No', minWidth: 150 }
+  { id: 'bikeNo', label: 'Bike No', minWidth: 150 },
+  {
+    id: 'download',
+    label: 'download',
+    minWidth: 120
+  }
 ];
 export const AllBikePurchase = () => {
   const [allBike, setAllBike] = useState([]);
@@ -61,6 +68,7 @@ export const AllBikePurchase = () => {
     fetchData();
   }, []);
 
+  // -----------------------------------------------------
   return (
     <div className="flex flex-col gap-5 p-10 max-lg:p-6 max-md:p-0">
       <div>
@@ -81,9 +89,19 @@ export const AllBikePurchase = () => {
             <TableBody>
               {allBike.map((item, Index) => (
                 <TableRow hover key={Index}>
-                  {columns.map((column) => (
-                    <TableCell key={column.id}>{column.id == 'purchaseDate' ? formatDate(item[column.id]) : item[column.id]}</TableCell>
-                  ))}
+                  <TableCell>{item.personName ?? 'NA'}</TableCell>
+                  <TableCell>{item.mobileNo ?? 'NA'}</TableCell>
+                  <TableCell>{item.panNo ?? 'NA'}</TableCell>
+                  <TableCell>{item.aadharNo ?? 'NA'}</TableCell>
+                  <TableCell>{item.cityName ?? 'NA'}</TableCell>
+                  <TableCell>{item.registrationNo ?? 'NA'}</TableCell>
+                  <TableCell>{formatDate(item.purchaseDate) ?? 'NA'}</TableCell>
+                  <TableCell>{item.bikeNo ?? 'NA'}</TableCell>
+                  <TableCell>
+                    <button onClick={() => generatePDF(item)}>
+                      <IconDownload />
+                    </button>
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>

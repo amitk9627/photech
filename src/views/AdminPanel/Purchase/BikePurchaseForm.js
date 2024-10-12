@@ -13,7 +13,8 @@ export const BikePurchaseForm = () => {
     panNo: '',
     panUpload: '',
     aadharNo: '',
-    aadharUpload: '',
+    aadharFront: '',
+    aadharBack: '',
     emailID: '',
     address: '',
     cityName: '',
@@ -22,7 +23,9 @@ export const BikePurchaseForm = () => {
     purchaseDate: '',
     bikeNo: '',
     bikeUpload: '',
-    remarks: ''
+    remarks: '',
+    engineNo: '',
+    chasisNo: ''
   });
 
   const handleFieldChange = (e) => {
@@ -46,7 +49,10 @@ export const BikePurchaseForm = () => {
       panNo: '',
       panUpload: '',
       aadharNo: '',
-      aadharUpload: '',
+      aadharFront: '',
+      aadharBack: '',
+      engineNo: '',
+      chasisNo: '',
       emailID: '',
       address: '',
       cityName: '',
@@ -62,32 +68,6 @@ export const BikePurchaseForm = () => {
   // Form Submit
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    const requiredFields = [
-      'personName',
-      'personPhoto',
-      'mobileNo',
-      'gender',
-      'panNo',
-      'panUpload',
-      'aadharNo',
-      'aadharUpload',
-      'emailID',
-      'address',
-      'cityName',
-      'pinCode',
-      'registrationNo',
-      'purchaseDate',
-      'bikeNo',
-      'bikeUpload',
-      'remarks'
-    ];
-    for (let item of requiredFields) {
-      if (!purchaseForm[item]) {
-        console.log(`Missing Field id ${item}`);
-        window.alert(`Missing Field id ${item}`);
-        return;
-      }
-    }
     const body = {
       personName: purchaseForm.personName,
       personPhoto: purchaseForm.personPhoto,
@@ -96,7 +76,8 @@ export const BikePurchaseForm = () => {
       panNo: purchaseForm.panNo,
       panUpload: purchaseForm.panUpload,
       aadharNo: purchaseForm.aadharNo,
-      aadharUpload: purchaseForm.aadharUpload,
+      aadharFront: purchaseForm.aadharFront,
+      aadharBack: purchaseForm.aadharBack,
       emailID: purchaseForm.emailID,
       address: purchaseForm.address,
       cityName: purchaseForm.cityName,
@@ -105,7 +86,9 @@ export const BikePurchaseForm = () => {
       purchaseDate: purchaseForm.purchaseDate,
       bikeNo: purchaseForm.bikeNo,
       bikeUpload: purchaseForm.bikeUpload,
-      remarks: purchaseForm.remarks
+      remarks: purchaseForm.remarks,
+      engineNo: purchaseForm.engineNo,
+      chasisNo: purchaseForm.chasisNo
     };
     try {
       const { data } = await axios.post(`${BackendUrl}/bike/addBikePurchase`, body);
@@ -238,7 +221,8 @@ export const BikePurchaseForm = () => {
                 variant="outlined"
               />
             </FormControl>
-            {purchaseForm.aadharUpload == '' ? (
+
+            {purchaseForm.aadharFront == '' ? (
               <FormControl fullWidth>
                 <TextField
                   onChange={handleImageChange}
@@ -247,15 +231,35 @@ export const BikePurchaseForm = () => {
                     shrink: true
                   }}
                   id="outlined-basic"
-                  label="Aadhar Upload"
-                  name="aadharUpload"
+                  label="Aadhar Front"
+                  name="aadharFront"
                   variant="outlined"
                 />
               </FormControl>
             ) : (
               <div className="flex justify-between items-center">
-                <img src={purchaseForm.aadharUpload} alt="" className="h-16 w-16" />
-                <button onClick={() => setPurchaseForm({ ...purchaseForm, aadharUpload: '' })}>Remove</button>
+                <img src={purchaseForm.aadharFront} alt="" className="h-16 w-16" />
+                <button onClick={() => setPurchaseForm({ ...purchaseForm, aadharFront: '' })}>Remove</button>
+              </div>
+            )}
+            {purchaseForm.aadharBack == '' ? (
+              <FormControl fullWidth>
+                <TextField
+                  onChange={handleImageChange}
+                  type="file"
+                  InputLabelProps={{
+                    shrink: true
+                  }}
+                  id="outlined-basic"
+                  label="Aadhar Back"
+                  name="aadharBack"
+                  variant="outlined"
+                />
+              </FormControl>
+            ) : (
+              <div className="flex justify-between items-center">
+                <img src={purchaseForm.aadharBack} alt="" className="h-16 w-16" />
+                <button onClick={() => setPurchaseForm({ ...purchaseForm, aadharBack: '' })}>Remove</button>
               </div>
             )}
 
@@ -346,6 +350,28 @@ export const BikePurchaseForm = () => {
                 id="outlined-basic"
                 label="Bike No."
                 name="bikeNo"
+                variant="outlined"
+              />
+            </FormControl>
+            <FormControl fullWidth>
+              <TextField
+                type="text"
+                value={purchaseForm.engineNo}
+                onChange={handleFieldChange}
+                id="outlined-basic"
+                label="Engine No."
+                name="engineNo"
+                variant="outlined"
+              />
+            </FormControl>
+            <FormControl fullWidth>
+              <TextField
+                type="text"
+                value={purchaseForm.chasisNo}
+                onChange={handleFieldChange}
+                id="outlined-basic"
+                label="Chasis No."
+                name="chasisNo"
                 variant="outlined"
               />
             </FormControl>
