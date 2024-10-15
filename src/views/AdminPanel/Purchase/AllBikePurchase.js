@@ -75,38 +75,42 @@ export const AllBikePurchase = () => {
         <h1 className="font-semibold text-3xl text-center max-md:text-md">All Bike Purchase</h1>
       </div>
       <div>
-        <TableContainer component={Paper} style={{ maxHeight: 450 }}>
-          <Table stickyHeader aria-label="sticky table">
-            <TableHead>
-              <TableRow>
-                {columns.map((column) => (
-                  <TableCell key={column.id} style={{ minWidth: column.minWidth }}>
-                    {column.label}
-                  </TableCell>
-                ))}
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {allBike.map((item, Index) => (
-                <TableRow hover key={Index}>
-                  <TableCell>{item.personName ?? 'NA'}</TableCell>
-                  <TableCell>{item.mobileNo ?? 'NA'}</TableCell>
-                  <TableCell>{item.panNo ?? 'NA'}</TableCell>
-                  <TableCell>{item.aadharNo ?? 'NA'}</TableCell>
-                  <TableCell>{item.cityName ?? 'NA'}</TableCell>
-                  <TableCell>{item.registrationNo ?? 'NA'}</TableCell>
-                  <TableCell>{formatDate(item.purchaseDate) ?? 'NA'}</TableCell>
-                  <TableCell>{item.bikeNo ?? 'NA'}</TableCell>
-                  <TableCell>
-                    <button onClick={() => generatePDF(item)}>
-                      <IconDownload />
-                    </button>
-                  </TableCell>
+        {allBike.length > 0 ? (
+          <TableContainer component={Paper} style={{ maxHeight: 450 }}>
+            <Table stickyHeader aria-label="sticky table">
+              <TableHead>
+                <TableRow>
+                  {columns.map((column) => (
+                    <TableCell key={column.id} style={{ minWidth: column.minWidth }}>
+                      {column.label}
+                    </TableCell>
+                  ))}
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
+              </TableHead>
+              <TableBody>
+                {allBike.map((item, Index) => (
+                  <TableRow hover key={Index}>
+                    <TableCell>{item.personName ?? 'NA'}</TableCell>
+                    <TableCell>{item.mobileNo ?? 'NA'}</TableCell>
+                    <TableCell>{item.panNo ?? 'NA'}</TableCell>
+                    <TableCell>{item.aadharNo ?? 'NA'}</TableCell>
+                    <TableCell>{item.cityName ?? 'NA'}</TableCell>
+                    <TableCell>{item.registrationNo ?? 'NA'}</TableCell>
+                    <TableCell>{formatDate(item.purchaseDate) ?? 'NA'}</TableCell>
+                    <TableCell>{item.bikeNo ?? 'NA'}</TableCell>
+                    <TableCell>
+                      <button onClick={() => generatePDF(item)}>
+                        <IconDownload />
+                      </button>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        ) : (
+          <p className="text-center font-semibold text-2xl">No Bike Added</p>
+        )}
       </div>
     </div>
   );
