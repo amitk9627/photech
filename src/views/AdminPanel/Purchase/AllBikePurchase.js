@@ -5,6 +5,7 @@ import { formatDate } from 'utils/TimeDate';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
 import { generatePDF } from 'utils/generatePDF';
 import { IconDownload } from '@tabler/icons-react';
+import Loader from 'ui-component/LoaderCircular';
 
 const columns = [
   {
@@ -53,13 +54,17 @@ const columns = [
 ];
 export const AllBikePurchase = () => {
   const [allBike, setAllBike] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const fetchData = async () => {
+    setIsLoading(true);
     try {
       const { data } = await axios(`${BackendUrl}/bike/getBikePurchase`);
       if (data.status) {
+        setIsLoading(false);
         setAllBike(data.result);
       }
     } catch (err) {
+      setIsLoading(false);
       console.log(err.response);
     }
   };
@@ -70,48 +75,55 @@ export const AllBikePurchase = () => {
 
   // -----------------------------------------------------
   return (
-    <div className="flex flex-col gap-5 p-10 max-lg:p-6 max-md:p-0">
-      <div>
-        <h1 className="font-semibold text-3xl text-center max-md:text-md">All Bike Purchase</h1>
-      </div>
-      <div>
-        {allBike.length > 0 ? (
-          <TableContainer component={Paper} style={{ maxHeight: 450 }}>
-            <Table stickyHeader aria-label="sticky table">
-              <TableHead>
-                <TableRow>
-                  {columns.map((column) => (
-                    <TableCell key={column.id} style={{ minWidth: column.minWidth }}>
-                      {column.label}
-                    </TableCell>
-                  ))}
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {allBike.map((item, Index) => (
-                  <TableRow hover key={Index}>
-                    <TableCell>{item.personName ?? 'NA'}</TableCell>
-                    <TableCell>{item.mobileNo ?? 'NA'}</TableCell>
-                    <TableCell>{item.panNo ?? 'NA'}</TableCell>
-                    <TableCell>{item.aadharNo ?? 'NA'}</TableCell>
-                    <TableCell>{item.cityName ?? 'NA'}</TableCell>
-                    <TableCell>{item.registrationNo ?? 'NA'}</TableCell>
-                    <TableCell>{formatDate(item.purchaseDate) ?? 'NA'}</TableCell>
-                    <TableCell>{item.bikeNo ?? 'NA'}</TableCell>
-                    <TableCell>
-                      <button onClick={() => generatePDF(item)}>
-                        <IconDownload />
-                      </button>
-                    </TableCell>
+    <>
+      {isLoading && (
+        <div>
+          <Loader />
+        </div>
+      )}
+      <div className="flex flex-col gap-5 p-10 max-lg:p-6 max-md:p-0">
+        <div>
+          <h1 className="font-semibold text-3xl text-center max-md:text-md">All Bike Purchase</h1>
+        </div>
+        <div>
+          {allBike.length > 0 ? (
+            <TableContainer component={Paper} style={{ maxHeight: 450 }}>
+              <Table stickyHeader aria-label="sticky table">
+                <TableHead>
+                  <TableRow>
+                    {columns.map((column) => (
+                      <TableCell key={column.id} style={{ minWidth: column.minWidth }}>
+                        {column.label}
+                      </TableCell>
+                    ))}
                   </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
-        ) : (
-          <p className="text-center font-semibold text-2xl">No Bike Added</p>
-        )}
+                </TableHead>
+                <TableBody>
+                  {allBike.map((item, Index) => (
+                    <TableRow hover key={Index}>
+                      <TableCell>{item.personName ?? 'NA'}</TableCell>
+                      <TableCell>{item.mobileNo ?? 'NA'}</TableCell>
+                      <TableCell>{item.panNo ?? 'NA'}</TableCell>
+                      <TableCell>{item.aadharNo ?? 'NA'}</TableCell>
+                      <TableCell>{item.cityName ?? 'NA'}</TableCell>
+                      <TableCell>{item.registrationNo ?? 'NA'}</TableCell>
+                      <TableCell>{formatDate(item.purchaseDate) ?? 'NA'}</TableCell>
+                      <TableCell>{item.bikeNo ?? 'NA'}</TableCell>
+                      <TableCell>
+                        <button onClick={() => generatePDF(item)}>
+                          <IconDownload />
+                        </button>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          ) : (
+            <p className="text-center font-semibold text-2xl">No Bike Added</p>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 };

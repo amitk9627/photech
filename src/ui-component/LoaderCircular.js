@@ -14,7 +14,7 @@ const LoaderWrapper = styled('div')({
 
 // ==============================|| LOADER ||============================== //
 const LoaderCircular = () => (
-  <div className="w-[100vw] h-[110vh]  absolute top-0 z-50 opacity-70">
+  <div className="w-[100vw] h-[100vh]  absolute top-0 z-50 opacity-70 bg-gray-200">
     <LoaderWrapper>
       <CircularProgress color="primary" className="opacity-95" />
     </LoaderWrapper>
