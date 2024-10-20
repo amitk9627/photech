@@ -9,7 +9,7 @@ export const handleFileChange = (event) => {
 
     reader.onloadend = () => {
       const base64 = reader.result; // Base64 string
-      resolve(base64); // Resolve the promise with the base64 string
+     return resolve(base64); // Resolve the promise with the base64 string
     };
 
     reader.onerror = (error) => {
