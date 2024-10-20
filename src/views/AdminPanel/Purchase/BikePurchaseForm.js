@@ -69,26 +69,26 @@ export const BikePurchaseForm = () => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     const body = {
-      personName: purchaseForm.personName,
-      personPhoto: purchaseForm.personPhoto,
-      mobileNo: purchaseForm.mobileNo,
-      gender: purchaseForm.gender,
-      panNo: purchaseForm.panNo,
-      panUpload: purchaseForm.panUpload,
-      aadharNo: purchaseForm.aadharNo,
-      aadharFront: purchaseForm.aadharFront,
-      aadharBack: purchaseForm.aadharBack,
-      emailID: purchaseForm.emailID,
-      address: purchaseForm.address,
-      cityName: purchaseForm.cityName,
-      pinCode: purchaseForm.pinCode,
-      registrationNo: purchaseForm.registrationNo,
-      purchaseDate: purchaseForm.purchaseDate,
-      bikeNo: purchaseForm.bikeNo,
-      bikeUpload: purchaseForm.bikeUpload,
-      remarks: purchaseForm.remarks,
-      engineNo: purchaseForm.engineNo,
-      chasisNo: purchaseForm.chasisNo
+      personName: purchaseForm.personName == '' ? null : purchaseForm.personName,
+      personPhoto: purchaseForm.personPhoto == '' ? null : purchaseForm.personPhoto,
+      mobileNo: purchaseForm.mobileNo == '' ? null : purchaseForm.mobileNo,
+      gender: purchaseForm.gender == '' ? null : purchaseForm.gender,
+      panNo: purchaseForm.panNo == '' ? null : purchaseForm.panNo,
+      panUpload: purchaseForm.panUpload == '' ? null : purchaseForm.panUpload,
+      aadharNo: purchaseForm.aadharNo == '' ? null : purchaseForm.aadharNo,
+      aadharFront: purchaseForm.aadharFront == '' ? null : purchaseForm.aadharFront,
+      aadharBack: purchaseForm.aadharBack == '' ? null : purchaseForm.aadharBack,
+      emailID: purchaseForm.emailID == '' ? null : purchaseForm.emailID,
+      address: purchaseForm.address == '' ? null : purchaseForm.address,
+      cityName: purchaseForm.cityName == '' ? null : purchaseForm.cityName,
+      pinCode: purchaseForm.pinCode == '' ? null : purchaseForm.pinCode,
+      registrationNo: purchaseForm.registrationNo == '' ? null : purchaseForm.registrationNo,
+      purchaseDate: purchaseForm.purchaseDate == '' ? null : purchaseForm.purchaseDate,
+      bikeNo: purchaseForm.bikeNo == '' ? null : purchaseForm.bikeNo,
+      bikeUpload: purchaseForm.bikeUpload == '' ? null : purchaseForm.bikeUpload,
+      remarks: purchaseForm.remarks == '' ? null : purchaseForm.remarks,
+      engineNo: purchaseForm.engineNo == '' ? null : purchaseForm.engineNo,
+      chasisNo: purchaseForm.chasisNo == '' ? null : purchaseForm.chasisNo
     };
     try {
       const { data } = await axios.post(`${BackendUrl}/bike/addBikePurchase`, body);
