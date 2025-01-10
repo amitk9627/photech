@@ -1,7 +1,7 @@
 import React from "react";
 import Banner from "@/assets/heroBanner.jpg";
 import Container from "@/components/Container/Container";
-const HeroBanner = () => {
+const  HeroBanner = () => {
   const backgroundImageStyle = {
     backgroundImage: `url(${Banner.src})`,
     backgroundSize: "cover",
