@@ -34,7 +34,7 @@ const Navbar = () => {
   //     document.removeEventListener("mousedown", handleClickOutside);
   //   };
   // }, []);
-  const navArr = ["/"];
+  const navArr = ["/","/about"];
   return (
     <>
       <div
