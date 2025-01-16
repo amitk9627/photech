@@ -17,7 +17,7 @@ const AboutBanner = () => {
             <br />
             Skilled Resource Deployment
           </h1>
-          <p>Skilled Engineers, Seamless Solutions, Successful Projects</p>
+          <p className="text-lg">Skilled Engineers, Seamless Solutions, Successful Projects</p>
         </div>
       </Container>
     </div>
