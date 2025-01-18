@@ -1,10 +1,8 @@
 import React from "react";
-import AboutBanner from "@/section/AboutSection/AboutBanner";
-import WhyChooseUs from "@/section/AboutSection/WhyChooseUs";
+import MissionBanner from "@/section/MissionSection/MissionBanner";
+import WhyChooseUs from "@/section/MissionSection/WhyChooseUs";
 import Container from "@/components/Container/Container";
-import WhatWe from "./WhatWe";
 import Banner from "@/assets/heroBanner.jpg";
-import Community from "@/section/AboutSection/Community";
 
 const page = () => {
   const communityImageStyle = {
@@ -15,22 +13,13 @@ const page = () => {
   };
   return (
     <div>
-      <AboutBanner />
+      <MissionBanner />
       <div className="py-16">
         <Container>
           <WhyChooseUs />
         </Container>
       </div>
-      <div className="bg-blue-300 py-16">
-        <Container>
-          <WhatWe />
-        </Container>
-      </div>
-      <div style={communityImageStyle} className="py-16">
-        <Container>
-          <Community />
-        </Container>
-      </div>
+    
     </div>
   );
 };
